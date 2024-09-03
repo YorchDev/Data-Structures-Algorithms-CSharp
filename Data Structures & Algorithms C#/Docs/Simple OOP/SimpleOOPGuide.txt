@@ -1,0 +1,195 @@
+
+Simple OOP (Object-Oriented Programming) in C#
+
+======================================
+1. What is a Class?
+======================================
+A class in C# is a blueprint for creating objects. It defines the properties (fields) and behaviors (methods) that the objects created from the class can have.
+
+Example:
+```csharp
+public class Person
+{
+    // Fields
+    public string FirstName;
+    public string LastName;
+
+    // Constructor
+    public Person(string firstName, string lastName)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+    }
+
+    // Method
+    public void Introduce()
+    {
+        Console.WriteLine($"Hello, my name is {FirstName} {LastName}.");
+    }
+}
+```
+======================================
+2. Creating an Object (Instance of a Class)
+======================================
+You can create an object (instance) of a class using the `new` keyword.
+
+Example:
+```csharp
+Person person = new Person("John", "Doe");
+person.Introduce(); // Output: Hello, my name is John Doe.
+```
+
+======================================
+3. Fields and Properties
+======================================
+Fields are variables that hold the data associated with a class. Properties are a way to expose fields with additional logic, often used for validation or encapsulation.
+
+Example of a field:
+```csharp
+public string FirstName; // Field
+```
+
+Example of a property:
+```csharp
+private string lastName;
+
+public string LastName
+{
+    get { return lastName; }
+    set 
+    {
+        if (!string.IsNullOrEmpty(value))
+        {
+            lastName = value;
+        }
+    }
+}
+```
+
+======================================
+4. Methods
+======================================
+Methods define the behavior of a class. They are functions that operate on the data in the class and can be called to perform actions.
+
+Example:
+```csharp
+public void Introduce()
+{
+    Console.WriteLine($"Hello, my name is {FirstName} {LastName}.");
+}
+```
+
+======================================
+5. Constructors
+======================================
+A constructor is a special method used to initialize objects. It is called automatically when an object is created.
+
+Example:
+```csharp
+public Person(string firstName, string lastName)
+{
+    FirstName = firstName;
+    LastName = lastName;
+}
+```
+
+======================================
+6. Inheritance
+======================================
+Inheritance allows a class to inherit members (fields, methods, etc.) from another class. The class that inherits is called a derived class, and the class being inherited from is called a base class.
+
+Example:
+```csharp
+public class Employee : Person
+{
+    public string JobTitle;
+
+    public Employee(string firstName, string lastName, string jobTitle)
+        : base(firstName, lastName) // Calling the base class constructor
+    {
+        JobTitle = jobTitle;
+    }
+
+    public void Work()
+    {
+        Console.WriteLine($"{FirstName} is working as a {JobTitle}.");
+    }
+}
+```
+
+======================================
+7. Encapsulation
+======================================
+Encapsulation is the concept of hiding the internal state and requiring all interactions to be performed through an object's methods. This is usually done using private fields and public properties or methods.
+
+Example:
+```csharp
+private string password;
+
+public void SetPassword(string pwd)
+{
+    if (pwd.Length >= 6)
+    {
+        password = pwd;
+    }
+}
+```
+
+======================================
+8. Polymorphism
+======================================
+Polymorphism allows methods to do different things based on the object it is acting upon. This can be achieved through method overriding.
+
+Example:
+```csharp
+public class Animal
+{
+    public virtual void Speak()
+    {
+        Console.WriteLine("The animal makes a sound.");
+    }
+}
+
+public class Dog : Animal
+{
+    public override void Speak()
+    {
+        Console.WriteLine("The dog barks.");
+    }
+}
+
+Animal animal = new Dog();
+animal.Speak(); // Output: The dog barks.
+```
+
+======================================
+9. Abstraction
+======================================
+Abstraction involves hiding complex implementation details and exposing only the essential features. Abstract classes and interfaces are used to achieve abstraction.
+
+Example:
+```csharp
+public abstract class Shape
+{
+    public abstract double GetArea();
+}
+
+public class Circle : Shape
+{
+    public double Radius { get; set; }
+
+    public Circle(double radius)
+    {
+        Radius = radius;
+    }
+
+    public override double GetArea()
+    {
+        return Math.PI * Radius * Radius;
+    }
+}
+```
+
+======================================
+End of Simple OOP Guide
+======================================

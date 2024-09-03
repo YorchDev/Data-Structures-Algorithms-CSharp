@@ -1,0 +1,135 @@
+HashMap (Dictionary) in C#
+
+--------------------------------------
+1. What is a HashMap (Dictionary)?
+--------------------------------------
+A Dictionary in C# is a collection of key-value pairs, where each key is unique, and is used to quickly lookup values associated with those keys. 
+It’s implemented as a hash table under the hood, providing efficient O(1) average time complexity for add, remove, and lookup operations.
+
+--------------------------------------
+2. Creating a HashMap (Dictionary):
+--------------------------------------
+You can create a Dictionary using the following syntax:
+
+var myDictionary = new Dictionary<TKey, TValue>();
+
+- `TKey` is the type of the keys in the dictionary.
+- `TValue` is the type of the values associated with the keys.
+
+Example:
+var myDictionary = new Dictionary<int, string>();
+
+--------------------------------------
+3. Adding Elements:
+--------------------------------------
+To add elements to the Dictionary:
+
+myDictionary.Add(key, value);
+
+Example:
+myDictionary.Add(1, "One");
+myDictionary.Add(2, "Two");
+
+--------------------------------------
+4. Accessing Elements:
+--------------------------------------
+You can access elements in a Dictionary using the key:
+
+var value = myDictionary[key];
+
+Example:
+string value = myDictionary[1]; // Returns "One"
+
+**Note:** If the key does not exist, it will throw a `KeyNotFoundException`. You can avoid this by using `TryGetValue`:
+
+if (myDictionary.TryGetValue(1, out string value)) {
+    Console.WriteLine(value);
+}
+
+--------------------------------------
+5. Updating Elements:
+--------------------------------------
+You can update an existing value associated with a key:
+
+myDictionary[key] = newValue;
+
+Example:
+myDictionary[1] = "One Updated";
+
+--------------------------------------
+6. Removing Elements:
+--------------------------------------
+To remove an element by its key:
+
+myDictionary.Remove(key);
+
+Example:
+myDictionary.Remove(1);
+
+--------------------------------------
+7. Checking for Existence:
+--------------------------------------
+To check if a key exists in the Dictionary:
+
+if (myDictionary.ContainsKey(key)) {
+    // Key exists
+}
+
+Example:
+if (myDictionary.ContainsKey(2)) {
+    Console.WriteLine("Key 2 exists.");
+}
+
+--------------------------------------
+8. Iterating Over a HashMap (Dictionary):
+--------------------------------------
+You can iterate over the key-value pairs using a `foreach` loop:
+
+foreach (var kvp in myDictionary) {
+    Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
+}
+
+Example:
+foreach (var kvp in myDictionary) {
+    Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
+}
+
+--------------------------------------
+9. Additional Methods:
+--------------------------------------
+- `Count`: Gets the number of key-value pairs in the Dictionary.
+  int count = myDictionary.Count;
+
+- `Clear`: Removes all elements from the Dictionary.
+  myDictionary.Clear();
+
+- `Keys`: Returns a collection containing all the keys.
+  var keys = myDictionary.Keys;
+
+- `Values`: Returns a collection containing all the values.
+  var values = myDictionary.Values;
+
+--------------------------------------
+10. Example Usage:
+--------------------------------------
+var myDictionary = new Dictionary<string, int>();
+myDictionary.Add("Apple", 10);
+myDictionary.Add("Banana", 5);
+
+if (myDictionary.ContainsKey("Apple")) {
+    Console.WriteLine("Apple count: " + myDictionary["Apple"]);
+}
+
+myDictionary["Banana"] = 20; // Update value
+
+foreach (var kvp in myDictionary) {
+    Console.WriteLine($"Key: {kvp.Key}, Value: {kvp.Value}");
+}
+
+myDictionary.Remove("Apple");
+
+Console.WriteLine("Total items: " + myDictionary.Count);
+
+--------------------------------------
+End of HashMap (Dictionary) Guide
+--------------------------------------
